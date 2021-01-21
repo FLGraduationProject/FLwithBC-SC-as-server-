@@ -16,7 +16,7 @@ import test as test
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--n_clients', type=int, default=20, help='')
-parser.add_argument('--n_chunks', type=int, default=10, help='')
+parser.add_argument('--n_chunks', type=int, default=255, help='')
 parser.add_argument('--p_level', type=int, default=10, help='')
 parser.add_argument('--batch_size', type=int, default=1, help='')
 parser.add_argument('--local_data_ratio', type=float, default=0.01, help='data size ratio each participant has')

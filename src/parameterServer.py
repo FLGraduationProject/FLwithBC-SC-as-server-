@@ -1,6 +1,8 @@
 import torch
 
 import parameters as pm
+import smartContract as sc
+import quantization as q
 
 def start_ps(server):
     ps = server
@@ -9,16 +11,21 @@ def start_ps(server):
 
 class parameterServer():
     def __init__(self, paramTensor, n_chunks, p_level):
-        self.chunks = []
-        for i in range(n_chunks):
-          self.chunks.append(paramTensor[int(i/n_chunks*len(paramTensor)) : int((i+1)/n_chunks*len(paramTensor))])
-        self.n_chunks = n_chunks
-        self.p_level = p_level
-        self.update_infos = []
+      chunks = q.tensor2Chunk(paramTensor, n_chunks)
+      for i, chunk in enumerate(chunks):
+        qArr, scale, zero_point = q.chunkQuantization(chunk)
+        print(qArr)
+        sc.upload_chunk(i, qArr, scale, zero_point)
+      self.n_chunks = n_chunks
+      self.p_level = p_level
+      self.update_infos = []
 
 
     def download_params(self):
-      return torch.cat(self.chunks)
+      chunks = []
+      for i in range(self.n_chunks):
+        chunks.append(torch.tensor(q.Qchunk2chunk(sc.get_chunk(i))))
+      return torch.cat(chunks)
 
 
     def upload(self, update_info):
@@ -28,7 +35,7 @@ class parameterServer():
 
     
     def push(self, chunk_num, newChunk):
-      self.chunks[chunk_num] = newChunk
+      sc.upload_chunk(chunk_num, newChunk)
 
 
     def update(self):
