@@ -3,57 +3,41 @@ from web3 import Web3
 import torch
 import numpy as np
 
-import quantization as q
 
 ganache_url = "http://127.0.0.1:7545"
-web3 = Web3(Web3.HTTPProvider(ganache_url))
-
-web3.eth.defaultAccount = web3.eth.accounts[0]
-
-abi = json.loads('[{"inputs":[{"internalType":"uint8","name":"","type":"uint8"}],"name":"chunks","outputs":[{"internalType":"uint16","name":"scale_significand","type":"uint16"},{"internalType":"int8","name":"scale_exponent","type":"int8"},{"internalType":"uint8","name":"zero_point","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint8","name":"chunk_num","type":"uint8"}],"name":"download_chunk","outputs":[{"internalType":"uint8[]","name":"arr","type":"uint8[]"},{"internalType":"uint16","name":"scale_significand","type":"uint16"},{"internalType":"int8","name":"scale_exponent","type":"int8"},{"internalType":"uint8","name":"zero_point","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint8","name":"chunk_num","type":"uint8"},{"internalType":"uint8[]","name":"arr","type":"uint8[]"},{"internalType":"uint16","name":"scale_significand","type":"uint16"},{"internalType":"int8","name":"scale_exponent","type":"int8"},{"internalType":"uint8","name":"zero_point","type":"uint8"}],"name":"upload_chunk","outputs":[],"stateMutability":"nonpayable","type":"function"}]')
-#address = web3.toChecksumAddress("0x0eF669Bf4e009dA0237f58ba4a50a74CDeB719c6")
-bytecode = "608060405234801561001057600080fd5b506105ba806100206000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c806313bc28df1461004657806358076c0e14610133578063bbc432b6146101d8575b600080fd5b610131600480360360a081101561005c57600080fd5b81019080803560ff1690602001909291908035906020019064010000000081111561008657600080fd5b82018360208201111561009857600080fd5b803590602001918460208302840111640100000000831117156100ba57600080fd5b919080806020026020016040519081016040528093929190818152602001838360200280828437600081840152601f19601f820116905080830192505050505050509192919290803561ffff169060200190929190803560000b9060200190929190803560ff169060200190929190505050610235565b005b6101626004803603602081101561014957600080fd5b81019080803560ff16906020019092919050505061030d565b60405180806020018561ffff1681526020018460000b81526020018360ff168152602001828103825286818151815260200191508051906020019060200280838360005b838110156101c15780820151818401526020810190506101a6565b505050509050019550505050505060405180910390f35b610207600480360360208110156101ee57600080fd5b81019080803560ff16906020019092919050505061043d565b604051808461ffff1681526020018360000b81526020018260ff168152602001935050505060405180910390f35b836000808760ff1660ff168152602001908152602001600020600001908051906020019061026492919061048f565b50826000808760ff1660ff16815260200190815260200160002060010160006101000a81548161ffff021916908361ffff160217905550816000808760ff1660ff16815260200190815260200160002060010160026101000a81548160ff021916908360000b60ff160217905550806000808760ff1660ff16815260200190815260200160002060010160036101000a81548160ff021916908360ff1602179055505050505050565b6060600080600061031c610536565b6000808760ff1660ff168152602001908152602001600020604051806080016040529081600082018054806020026020016040519081016040528092919081815260200182805480156103b457602002820191906000526020600020906000905b82829054906101000a900460ff1660ff168152602001906001019060208260000104928301926001038202915080841161037d5790505b505050505081526020016001820160009054906101000a900461ffff1661ffff1661ffff1681526020016001820160029054906101000a900460000b60000b60000b81526020016001820160039054906101000a900460ff1660ff1660ff1681525050905080600001518160200151826040015183606001519450945094509450509193509193565b60006020528060005260406000206000915090508060010160009054906101000a900461ffff16908060010160029054906101000a900460000b908060010160039054906101000a900460ff16905083565b82805482825590600052602060002090601f016020900481019282156105255791602002820160005b838211156104f657835183826101000a81548160ff021916908360ff16021790555092602001926001016020816000010492830192600103026104b8565b80156105235782816101000a81549060ff02191690556001016020816000010492830192600103026104f6565b505b5090506105329190610567565b5090565b604051806080016040528060608152602001600061ffff1681526020016000800b8152602001600060ff1681525090565b5b80821115610580576000816000905550600101610568565b509056fea264697066735822122088af2eb4c750dfcaedb4b081b9e92dc4b2dfb79af57f20639a2169914651884864736f6c63430007040033"
 
 
-Storage = web3.eth.contract(bytecode=bytecode, abi=abi)
-
-tx_hash = Storage.constructor().transact()
-
-tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
-
-contract = web3.eth.contract(
-  address=tx_receipt.contractAddress,
-  abi=abi,
-)
-
-print(tx_receipt.contractAddress)
-
-def get_chunk(chunk_num):
-  print("got chunk {}".format(chunk_num))
-  return contract.functions.download_chunk(chunk_num).call()
+class SmartContract:
+  def __init__(self, chunk_num):
+    self.chunk_num = chunk_num
+    web3 = Web3(Web3.HTTPProvider(ganache_url))
+    web3.eth.defaultAccount = web3.eth.accounts[0]
+    truffleFile = json.load(open('./build/contracts/Chunk.json'))
+    abi = truffleFile['abi']
+    bytecode = truffleFile['bytecode']
+    contract = web3.eth.contract(bytecode=bytecode, abi=abi)
+    tx_hash = contract.constructor().transact()
+    tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
+    self.contract = web3.eth.contract(address=tx_receipt.contractAddress, abi=abi)
+    print("chunk {} made".format(self.chunk_num))
 
 
-def sig_exp(num):
-  n = num
-  exp = 0
-  while True:
-    if n>=2:
-      n /= 2
-      exp += 1
-    elif n<1:
-      n *= 2
-      exp -= 1
-    else:
-      break
-  return int((n-1)*pow(2,8)), exp
+  def get_chunk(self):
+    print("got chunk {}".format(self.chunk_num))
+    return self.contract.functions.download_chunk().call()
 
 
-def upload_chunk(chunk_num, arr, scale, zero_point):
+  def upload_chunk(self, codebook):
+    print("uploaded chunk {}".format(self.chunk_num))
+    self.contract.functions.upload_book(codebook[:3]).transact()
+    for key in codebook[3].keys():
+      self.contract.functions.upload_arr(key, codebook[3][key]).transact()
   
-  print("uploaded chunk {}".format(chunk_num))
-  scale_significand, scale_exponent = sig_exp(scale)
-  return contract.functions.upload_chunk(chunk_num, arr, scale_significand, scale_exponent, zero_point).transact()
-  
+
+# sc = SmartContract(5)
+# sc.upload_chunk((1,1,1,[[1,2,3], [2,3,4]]))
+# print(sc.get_chunk())
+
 # arr, scale, zero_point = q.chunkQuantization(torch.tensor([-1.2, 1.1, 2.1]))
 # upload_chunk(0, arr, scale, zero_point)
 # print(get_chunk(0))

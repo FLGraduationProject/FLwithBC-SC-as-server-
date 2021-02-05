@@ -1,4 +1,5 @@
 import torch
+import sys
 
 import parameters as pm
 import smartContract as sc
@@ -11,11 +12,14 @@ def start_ps(server):
 
 class parameterServer():
     def __init__(self, paramTensor, n_chunks, p_level):
+      self.contracts = []
       chunks = q.tensor2Chunk(paramTensor, n_chunks)
       for i, chunk in enumerate(chunks):
-        qArr, scale, zero_point = q.chunkQuantization(chunk)
-        print(qArr)
-        sc.upload_chunk(i, qArr, scale, zero_point)
+        self.contracts.append(sc.SmartContract(i))
+        qArr, scale, zero_point = q.chunk2Qchunk(chunk)
+        cbook = q.codebook(qArr, scale, zero_point)
+        print(sys.getsizeof(cbook[3]))
+        self.contracts[i].upload_chunk(cbook)
       self.n_chunks = n_chunks
       self.p_level = p_level
       self.update_infos = []

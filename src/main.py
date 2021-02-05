@@ -13,10 +13,12 @@ import parameterServer as ps
 import client as clt
 import dataLoader as dl
 import test as test
+import smartContract as sc
+import quantization as q
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--n_clients', type=int, default=20, help='')
-parser.add_argument('--n_chunks', type=int, default=255, help='')
+parser.add_argument('--n_chunks', type=int, default=100, help='')
 parser.add_argument('--p_level', type=int, default=10, help='')
 parser.add_argument('--batch_size', type=int, default=1, help='')
 parser.add_argument('--local_data_ratio', type=float, default=0.01, help='data size ratio each participant has')
@@ -46,7 +48,7 @@ train_loader = dl.divideData2Clients(opt.local_data_ratio, opt.n_clients, opt.ba
 initialmodel = opt.model_type()
 
 initial_params = pm.Parameters()
-initial_params.setByDict(initialmodel.state_dict())
+initial_params.setByDict(q.modelPruning(initialmodel.state_dict(), 0.9))
 
 server = ps.parameterServer(initial_params.paramTensor, opt.n_chunks, opt.p_level)
 

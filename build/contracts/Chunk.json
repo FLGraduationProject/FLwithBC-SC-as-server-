@@ -1,0 +1,1340 @@
+{
+  "contractName": "Chunk",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "arr",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint16",
+              "name": "scale_significand",
+              "type": "uint16"
+            },
+            {
+              "internalType": "int8",
+              "name": "scale_exponent",
+              "type": "int8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "zero_point",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct Chunk.Codebook",
+          "name": "book",
+          "type": "tuple"
+        }
+      ],
+      "name": "upload_book",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "key",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint16[]",
+          "name": "value",
+          "type": "uint16[]"
+        }
+      ],
+      "name": "upload_arr",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "download_chunk",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint16",
+              "name": "scale_significand",
+              "type": "uint16"
+            },
+            {
+              "internalType": "int8",
+              "name": "scale_exponent",
+              "type": "int8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "zero_point",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct Chunk.Codebook",
+          "name": "book",
+          "type": "tuple"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"arr\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"download_chunk\",\"outputs\":[{\"components\":[{\"internalType\":\"uint16\",\"name\":\"scale_significand\",\"type\":\"uint16\"},{\"internalType\":\"int8\",\"name\":\"scale_exponent\",\"type\":\"int8\"},{\"internalType\":\"uint8\",\"name\":\"zero_point\",\"type\":\"uint8\"}],\"internalType\":\"struct Chunk.Codebook\",\"name\":\"book\",\"type\":\"tuple\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"key\",\"type\":\"uint8\"},{\"internalType\":\"uint16[]\",\"name\":\"value\",\"type\":\"uint16[]\"}],\"name\":\"upload_arr\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"components\":[{\"internalType\":\"uint16\",\"name\":\"scale_significand\",\"type\":\"uint16\"},{\"internalType\":\"int8\",\"name\":\"scale_exponent\",\"type\":\"int8\"},{\"internalType\":\"uint8\",\"name\":\"zero_point\",\"type\":\"uint8\"}],\"internalType\":\"struct Chunk.Codebook\",\"name\":\"book\",\"type\":\"tuple\"}],\"name\":\"upload_book\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/User/Development/pytorch/graduate project/FLwithBC/contracts/chunk.sol\":\"Chunk\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/User/Development/pytorch/graduate project/FLwithBC/contracts/chunk.sol\":{\"keccak256\":\"0x4c9f678580239c1637a133063252a24a71550a6e70860472d87f24ceab1a8398\",\"urls\":[\"bzz-raw://3f5bf4ade6d3b7653093ae635d7e5852a145b7c70f0446d2acb6e7003c412553\",\"dweb:/ipfs/QmPNQbVRRWd1MzmnPUP4VLEU3Uv6iksggbrdyZHfAkS6aa\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610700806100206000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c80635af6c24814610051578063763ccc3f1461006f5780639925b7cf1461008b57806399404b41146100bb575b600080fd5b6100596100d7565b60405161006691906105a4565b60405180910390f35b61008960048036036100849190810190610496565b61014b565b005b6100a560048036036100a091908101906104ea565b61017c565b6040516100b291906105bf565b60405180910390f35b6100d560048036036100d0919081019061046d565b6101c0565b005b6100df610231565b60016040518060600160405290816000820160009054906101000a900461ffff1661ffff1661ffff1681526020016000820160029054906101000a900460000b60000b60000b81526020016000820160039054906101000a900460ff1660ff1660ff1681525050905090565b806000808460ff1660ff168152602001908152602001600020908051906020019061017792919061025b565b505050565b6000602052816000526040600020818154811061019557fe5b9060005260206000209060109182820401919006600202915091509054906101000a900461ffff1681565b80600160008201518160000160006101000a81548161ffff021916908361ffff16021790555060208201518160000160026101000a81548160ff021916908360000b60ff16021790555060408201518160000160036101000a81548160ff021916908360ff16021790555090505050565b6040518060600160405280600061ffff1681526020016000800b8152602001600060ff1681525090565b82805482825590600052602060002090600f016010900481019282156102f45791602002820160005b838211156102c457835183826101000a81548161ffff021916908361ffff1602179055509260200192600201602081600101049283019260010302610284565b80156102f25782816101000a81549061ffff02191690556002016020816001010492830192600103026102c4565b505b5090506103019190610305565b5090565b61033391905b8082111561032f57600081816101000a81549061ffff02191690555060010161030b565b5090565b90565b600082601f83011261034757600080fd5b813561035a61035582610607565b6105da565b9150818183526020840193506020810190508385602084028201111561037f57600080fd5b60005b838110156103af5781610395888261042e565b845260208401935060208301925050600181019050610382565b5050505092915050565b6000813590506103c881610661565b92915050565b6000606082840312156103e057600080fd5b6103ea60606105da565b905060006103fa8482850161042e565b600083015250602061040e848285016103b9565b602083015250604061042284828501610458565b60408301525092915050565b60008135905061043d81610678565b92915050565b6000813590506104528161068f565b92915050565b600081359050610467816106a6565b92915050565b60006060828403121561047f57600080fd5b600061048d848285016103ce565b91505092915050565b600080604083850312156104a957600080fd5b60006104b785828601610458565b925050602083013567ffffffffffffffff8111156104d457600080fd5b6104e085828601610336565b9150509250929050565b600080604083850312156104fd57600080fd5b600061050b85828601610458565b925050602061051c85828601610443565b9150509250929050565b61052f8161062f565b82525050565b60608201600082015161054b6000850182610577565b50602082015161055e6020850182610526565b5060408201516105716040850182610595565b50505050565b6105808161063c565b82525050565b61058f8161063c565b82525050565b61059e81610654565b82525050565b60006060820190506105b96000830184610535565b92915050565b60006020820190506105d46000830184610586565b92915050565b6000604051905081810181811067ffffffffffffffff821117156105fd57600080fd5b8060405250919050565b600067ffffffffffffffff82111561061e57600080fd5b602082029050602081019050919050565b60008160000b9050919050565b600061ffff82169050919050565b6000819050919050565b600060ff82169050919050565b61066a8161062f565b811461067557600080fd5b50565b6106818161063c565b811461068c57600080fd5b50565b6106988161064a565b81146106a357600080fd5b50565b6106af81610654565b81146106ba57600080fd5b5056fea365627a7a72315820a1b0edc9c62faedaaed2d60246b99e01666f4c7e9243db2fbcea03801947cb146c6578706572696d656e74616cf564736f6c63430005100040",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c80635af6c24814610051578063763ccc3f1461006f5780639925b7cf1461008b57806399404b41146100bb575b600080fd5b6100596100d7565b60405161006691906105a4565b60405180910390f35b61008960048036036100849190810190610496565b61014b565b005b6100a560048036036100a091908101906104ea565b61017c565b6040516100b291906105bf565b60405180910390f35b6100d560048036036100d0919081019061046d565b6101c0565b005b6100df610231565b60016040518060600160405290816000820160009054906101000a900461ffff1661ffff1661ffff1681526020016000820160029054906101000a900460000b60000b60000b81526020016000820160039054906101000a900460ff1660ff1660ff1681525050905090565b806000808460ff1660ff168152602001908152602001600020908051906020019061017792919061025b565b505050565b6000602052816000526040600020818154811061019557fe5b9060005260206000209060109182820401919006600202915091509054906101000a900461ffff1681565b80600160008201518160000160006101000a81548161ffff021916908361ffff16021790555060208201518160000160026101000a81548160ff021916908360000b60ff16021790555060408201518160000160036101000a81548160ff021916908360ff16021790555090505050565b6040518060600160405280600061ffff1681526020016000800b8152602001600060ff1681525090565b82805482825590600052602060002090600f016010900481019282156102f45791602002820160005b838211156102c457835183826101000a81548161ffff021916908361ffff1602179055509260200192600201602081600101049283019260010302610284565b80156102f25782816101000a81549061ffff02191690556002016020816001010492830192600103026102c4565b505b5090506103019190610305565b5090565b61033391905b8082111561032f57600081816101000a81549061ffff02191690555060010161030b565b5090565b90565b600082601f83011261034757600080fd5b813561035a61035582610607565b6105da565b9150818183526020840193506020810190508385602084028201111561037f57600080fd5b60005b838110156103af5781610395888261042e565b845260208401935060208301925050600181019050610382565b5050505092915050565b6000813590506103c881610661565b92915050565b6000606082840312156103e057600080fd5b6103ea60606105da565b905060006103fa8482850161042e565b600083015250602061040e848285016103b9565b602083015250604061042284828501610458565b60408301525092915050565b60008135905061043d81610678565b92915050565b6000813590506104528161068f565b92915050565b600081359050610467816106a6565b92915050565b60006060828403121561047f57600080fd5b600061048d848285016103ce565b91505092915050565b600080604083850312156104a957600080fd5b60006104b785828601610458565b925050602083013567ffffffffffffffff8111156104d457600080fd5b6104e085828601610336565b9150509250929050565b600080604083850312156104fd57600080fd5b600061050b85828601610458565b925050602061051c85828601610443565b9150509250929050565b61052f8161062f565b82525050565b60608201600082015161054b6000850182610577565b50602082015161055e6020850182610526565b5060408201516105716040850182610595565b50505050565b6105808161063c565b82525050565b61058f8161063c565b82525050565b61059e81610654565b82525050565b60006060820190506105b96000830184610535565b92915050565b60006020820190506105d46000830184610586565b92915050565b6000604051905081810181811067ffffffffffffffff821117156105fd57600080fd5b8060405250919050565b600067ffffffffffffffff82111561061e57600080fd5b602082029050602081019050919050565b60008160000b9050919050565b600061ffff82169050919050565b6000819050919050565b600060ff82169050919050565b61066a8161062f565b811461067557600080fd5b50565b6106818161063c565b811461068c57600080fd5b50565b6106988161064a565b81146106a357600080fd5b50565b6106af81610654565b81146106ba57600080fd5b5056fea365627a7a72315820a1b0edc9c62faedaaed2d60246b99e01666f4c7e9243db2fbcea03801947cb146c6578706572696d656e74616cf564736f6c63430005100040",
+  "sourceMap": "70:587:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;70:587:1;;;;;;;",
+  "deployedSourceMap": "70:587:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;70:587:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;551:103;;;:::i;:::-;;;;;;;;;;;;;;;;443:96;;;;;;;;;;;;;;;;:::i;:::-;;220:37;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;351:84;;;;;;;;;;;;;;;;:::i;:::-;;551:103;598:20;;:::i;:::-;638:8;631:15;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;551:103;:::o;443:96::-;526:5;515:3;:8;519:3;515:8;;;;;;;;;;;;;;;:16;;;;;;;;;;;;:::i;:::-;;443:96;;:::o;220:37::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;351:84::-;423:4;412:8;:15;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;351:84;:::o;70:587::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;22:704:-1:-;;138:3;131:4;123:6;119:17;115:27;105:2;;156:1;153;146:12;105:2;193:6;180:20;215:79;230:63;286:6;230:63;;;215:79;;;206:88;;311:5;336:6;329:5;322:21;366:4;358:6;354:17;344:27;;388:4;383:3;379:14;372:21;;441:6;488:3;480:4;472:6;468:17;463:3;459:27;456:36;453:2;;;505:1;502;495:12;453:2;530:1;515:205;540:6;537:1;534:13;515:205;;;598:3;620:36;652:3;640:10;620:36;;;615:3;608:49;680:4;675:3;671:14;664:21;;708:4;703:3;699:14;692:21;;572:148;562:1;559;555:9;550:14;;515:205;;;519:14;98:628;;;;;;;;734:124;;811:6;798:20;789:29;;823:30;847:5;823:30;;;783:75;;;;;893:633;;1006:4;994:9;989:3;985:19;981:30;978:2;;;1024:1;1021;1014:12;978:2;1042:20;1057:4;1042:20;;;1033:29;;1125:1;1157:48;1201:3;1192:6;1181:9;1177:22;1157:48;;;1150:4;1143:5;1139:16;1132:74;1072:145;1277:2;1310:46;1352:3;1343:6;1332:9;1328:22;1310:46;;;1303:4;1296:5;1292:16;1285:72;1227:141;1424:2;1457:47;1500:3;1491:6;1480:9;1476:22;1457:47;;;1450:4;1443:5;1439:16;1432:73;1378:138;972:554;;;;;1533:128;;1612:6;1599:20;1590:29;;1624:32;1650:5;1624:32;;;1584:77;;;;;1668:130;;1748:6;1735:20;1726:29;;1760:33;1787:5;1760:33;;;1720:78;;;;;1805:126;;1883:6;1870:20;1861:29;;1895:31;1920:5;1895:31;;;1855:76;;;;;1938:289;;2066:2;2054:9;2045:7;2041:23;2037:32;2034:2;;;2082:1;2079;2072:12;2034:2;2117:1;2134:77;2203:7;2194:6;2183:9;2179:22;2134:77;;;2124:87;;2096:121;2028:199;;;;;2234:496;;;2377:2;2365:9;2356:7;2352:23;2348:32;2345:2;;;2393:1;2390;2383:12;2345:2;2428:1;2445:51;2488:7;2479:6;2468:9;2464:22;2445:51;;;2435:61;;2407:95;2561:2;2550:9;2546:18;2533:32;2585:18;2577:6;2574:30;2571:2;;;2617:1;2614;2607:12;2571:2;2637:77;2706:7;2697:6;2686:9;2682:22;2637:77;;;2627:87;;2512:208;2339:391;;;;;;2737:362;;;2856:2;2844:9;2835:7;2831:23;2827:32;2824:2;;;2872:1;2869;2862:12;2824:2;2907:1;2924:51;2967:7;2958:6;2947:9;2943:22;2924:51;;;2914:61;;2886:95;3012:2;3030:53;3075:7;3066:6;3055:9;3051:22;3030:53;;;3020:63;;2991:98;2818:281;;;;;;3106:94;3173:21;3188:5;3173:21;;;3168:3;3161:34;3155:45;;;3260:645;3401:4;3396:3;3392:14;3497:4;3490:5;3486:16;3480:23;3509:61;3564:4;3559:3;3555:14;3541:12;3509:61;;;3421:155;3659:4;3652:5;3648:16;3642:23;3671:57;3722:4;3717:3;3713:14;3699:12;3671:57;;;3586:148;3813:4;3806:5;3802:16;3796:23;3825:59;3878:4;3873:3;3869:14;3855:12;3825:59;;;3744:146;3374:531;;;;3912:100;3983:23;4000:5;3983:23;;;3978:3;3971:36;3965:47;;;4019:110;4100:23;4117:5;4100:23;;;4095:3;4088:36;4082:47;;;4136:97;4205:22;4221:5;4205:22;;;4200:3;4193:35;4187:46;;;4240:309;;4406:2;4395:9;4391:18;4383:26;;4420:119;4536:1;4525:9;4521:17;4512:6;4420:119;;;4377:172;;;;;4556:209;;4672:2;4661:9;4657:18;4649:26;;4686:69;4752:1;4741:9;4737:17;4728:6;4686:69;;;4643:122;;;;;4772:256;;4834:2;4828:9;4818:19;;4872:4;4864:6;4860:17;4971:6;4959:10;4956:22;4935:18;4923:10;4920:34;4917:62;4914:2;;;4992:1;4989;4982:12;4914:2;5012:10;5008:2;5001:22;4812:216;;;;;5035:303;;5193:18;5185:6;5182:30;5179:2;;;5225:1;5222;5215:12;5179:2;5260:4;5252:6;5248:17;5240:25;;5323:4;5317;5313:15;5305:23;;5116:222;;;;5345:84;;5418:5;5415:1;5404:20;5393:31;;5387:42;;;;5436:84;;5508:6;5501:5;5497:18;5486:29;;5480:40;;;;5527:72;;5589:5;5578:16;;5572:27;;;;5606:81;;5677:4;5670:5;5666:16;5655:27;;5649:38;;;;5694:111;5760:21;5775:5;5760:21;;;5753:5;5750:32;5740:2;;5796:1;5793;5786:12;5740:2;5734:71;;5812:115;5880:23;5897:5;5880:23;;;5873:5;5870:34;5860:2;;5918:1;5915;5908:12;5860:2;5854:73;;5934:117;6003:24;6021:5;6003:24;;;5996:5;5993:35;5983:2;;6042:1;6039;6032:12;5983:2;5977:74;;6058:113;6125:22;6141:5;6125:22;;;6118:5;6115:33;6105:2;;6162:1;6159;6152:12;6105:2;6099:72;",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma experimental ABIEncoderV2;\r\n\r\ncontract Chunk {\r\n    \r\n    struct Codebook {\r\n        uint16 scale_significand;\r\n        int8 scale_exponent;\r\n        uint8 zero_point;\r\n    }\r\n    mapping(uint8 => uint16[]) public arr;\r\n\r\n\r\n    // mapping(uint16 => uint16[]) public chunks;\r\n    Codebook codebook;\r\n    \r\n\r\n    function upload_book(Codebook memory book) public {\r\n        codebook = book;\r\n    }\r\n\r\n    function upload_arr(uint8 key, uint16[] memory value) public {\r\n        arr[key] = value;\r\n    }\r\n    \r\n    function download_chunk() public view returns (Codebook memory book) {\r\n        return codebook;\r\n    }\r\n}",
+  "sourcePath": "C:/Users/User/Development/pytorch/graduate project/FLwithBC/contracts/chunk.sol",
+  "ast": {
+    "absolutePath": "/C/Users/User/Development/pytorch/graduate project/FLwithBC/contracts/chunk.sol",
+    "exportedSymbols": {
+      "Chunk": [
+        82
+      ]
+    },
+    "id": 83,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 34,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:33:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 82,
+        "linearizedBaseContracts": [
+          82
+        ],
+        "name": "Chunk",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Chunk.Codebook",
+            "id": 41,
+            "members": [
+              {
+                "constant": false,
+                "id": 36,
+                "name": "scale_significand",
+                "nodeType": "VariableDeclaration",
+                "scope": 41,
+                "src": "125:24:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 35,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "125:6:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 38,
+                "name": "scale_exponent",
+                "nodeType": "VariableDeclaration",
+                "scope": 41,
+                "src": "160:19:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_int8",
+                  "typeString": "int8"
+                },
+                "typeName": {
+                  "id": 37,
+                  "name": "int8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "160:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int8",
+                    "typeString": "int8"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 40,
+                "name": "zero_point",
+                "nodeType": "VariableDeclaration",
+                "scope": 41,
+                "src": "190:16:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 39,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "190:5:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Codebook",
+            "nodeType": "StructDefinition",
+            "scope": 82,
+            "src": "98:116:1",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 46,
+            "name": "arr",
+            "nodeType": "VariableDeclaration",
+            "scope": 82,
+            "src": "220:37:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint8_$_t_array$_t_uint16_$dyn_storage_$",
+              "typeString": "mapping(uint8 => uint16[])"
+            },
+            "typeName": {
+              "id": 45,
+              "keyType": {
+                "id": 42,
+                "name": "uint8",
+                "nodeType": "ElementaryTypeName",
+                "src": "228:5:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "220:26:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint8_$_t_array$_t_uint16_$dyn_storage_$",
+                "typeString": "mapping(uint8 => uint16[])"
+              },
+              "valueType": {
+                "baseType": {
+                  "id": 43,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "237:6:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "id": 44,
+                "length": null,
+                "nodeType": "ArrayTypeName",
+                "src": "237:8:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_uint16_$dyn_storage_ptr",
+                  "typeString": "uint16[]"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 48,
+            "name": "codebook",
+            "nodeType": "VariableDeclaration",
+            "scope": 82,
+            "src": "319:17:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_Codebook_$41_storage",
+              "typeString": "struct Chunk.Codebook"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 47,
+              "name": "Codebook",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 41,
+              "src": "319:8:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_Codebook_$41_storage_ptr",
+                "typeString": "struct Chunk.Codebook"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 57,
+              "nodeType": "Block",
+              "src": "401:34:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 55,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 53,
+                      "name": "codebook",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 48,
+                      "src": "412:8:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Codebook_$41_storage",
+                        "typeString": "struct Chunk.Codebook storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 54,
+                      "name": "book",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 50,
+                      "src": "423:4:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Codebook_$41_memory_ptr",
+                        "typeString": "struct Chunk.Codebook memory"
+                      }
+                    },
+                    "src": "412:15:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Codebook_$41_storage",
+                      "typeString": "struct Chunk.Codebook storage ref"
+                    }
+                  },
+                  "id": 56,
+                  "nodeType": "ExpressionStatement",
+                  "src": "412:15:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 58,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "upload_book",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 51,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 50,
+                  "name": "book",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 58,
+                  "src": "372:20:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Codebook_$41_memory_ptr",
+                    "typeString": "struct Chunk.Codebook"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 49,
+                    "name": "Codebook",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 41,
+                    "src": "372:8:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Codebook_$41_storage_ptr",
+                      "typeString": "struct Chunk.Codebook"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "371:22:1"
+            },
+            "returnParameters": {
+              "id": 52,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "401:0:1"
+            },
+            "scope": 82,
+            "src": "351:84:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 72,
+              "nodeType": "Block",
+              "src": "504:35:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 70,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 66,
+                        "name": "arr",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 46,
+                        "src": "515:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint8_$_t_array$_t_uint16_$dyn_storage_$",
+                          "typeString": "mapping(uint8 => uint16[] storage ref)"
+                        }
+                      },
+                      "id": 68,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 67,
+                        "name": "key",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 60,
+                        "src": "519:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint8",
+                          "typeString": "uint8"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "515:8:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_uint16_$dyn_storage",
+                        "typeString": "uint16[] storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 69,
+                      "name": "value",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 63,
+                      "src": "526:5:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_uint16_$dyn_memory_ptr",
+                        "typeString": "uint16[] memory"
+                      }
+                    },
+                    "src": "515:16:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint16_$dyn_storage",
+                      "typeString": "uint16[] storage ref"
+                    }
+                  },
+                  "id": 71,
+                  "nodeType": "ExpressionStatement",
+                  "src": "515:16:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 73,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "upload_arr",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 64,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 60,
+                  "name": "key",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 73,
+                  "src": "463:9:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 59,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "463:5:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 63,
+                  "name": "value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 73,
+                  "src": "474:21:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint16_$dyn_memory_ptr",
+                    "typeString": "uint16[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 61,
+                      "name": "uint16",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "474:6:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint16",
+                        "typeString": "uint16"
+                      }
+                    },
+                    "id": 62,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "474:8:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint16_$dyn_storage_ptr",
+                      "typeString": "uint16[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "462:34:1"
+            },
+            "returnParameters": {
+              "id": 65,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "504:0:1"
+            },
+            "scope": 82,
+            "src": "443:96:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 80,
+              "nodeType": "Block",
+              "src": "620:34:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 78,
+                    "name": "codebook",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 48,
+                    "src": "638:8:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Codebook_$41_storage",
+                      "typeString": "struct Chunk.Codebook storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 77,
+                  "id": 79,
+                  "nodeType": "Return",
+                  "src": "631:15:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 81,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "download_chunk",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 74,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "574:2:1"
+            },
+            "returnParameters": {
+              "id": 77,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 76,
+                  "name": "book",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 81,
+                  "src": "598:20:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Codebook_$41_memory_ptr",
+                    "typeString": "struct Chunk.Codebook"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 75,
+                    "name": "Codebook",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 41,
+                    "src": "598:8:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Codebook_$41_storage_ptr",
+                      "typeString": "struct Chunk.Codebook"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "597:22:1"
+            },
+            "scope": 82,
+            "src": "551:103:1",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 83,
+        "src": "70:587:1"
+      }
+    ],
+    "src": "33:624:1"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/C/Users/User/Development/pytorch/graduate project/FLwithBC/contracts/chunk.sol",
+      "exportedSymbols": {
+        "Chunk": [
+          82
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 34,
+        "name": "PragmaDirective",
+        "src": "33:33:1"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            82
+          ],
+          "name": "Chunk",
+          "scope": 83
+        },
+        "children": [
+          {
+            "attributes": {
+              "canonicalName": "Chunk.Codebook",
+              "name": "Codebook",
+              "scope": 82,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "scale_significand",
+                  "scope": 41,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint16",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint16",
+                      "type": "uint16"
+                    },
+                    "id": 35,
+                    "name": "ElementaryTypeName",
+                    "src": "125:6:1"
+                  }
+                ],
+                "id": 36,
+                "name": "VariableDeclaration",
+                "src": "125:24:1"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "scale_exponent",
+                  "scope": 41,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "int8",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "int8",
+                      "type": "int8"
+                    },
+                    "id": 37,
+                    "name": "ElementaryTypeName",
+                    "src": "160:4:1"
+                  }
+                ],
+                "id": 38,
+                "name": "VariableDeclaration",
+                "src": "160:19:1"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "zero_point",
+                  "scope": 41,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint8",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint8",
+                      "type": "uint8"
+                    },
+                    "id": 39,
+                    "name": "ElementaryTypeName",
+                    "src": "190:5:1"
+                  }
+                ],
+                "id": 40,
+                "name": "VariableDeclaration",
+                "src": "190:16:1"
+              }
+            ],
+            "id": 41,
+            "name": "StructDefinition",
+            "src": "98:116:1"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "arr",
+              "scope": 82,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(uint8 => uint16[])",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "mapping(uint8 => uint16[])"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint8",
+                      "type": "uint8"
+                    },
+                    "id": 42,
+                    "name": "ElementaryTypeName",
+                    "src": "228:5:1"
+                  },
+                  {
+                    "attributes": {
+                      "length": null,
+                      "type": "uint16[]"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint16",
+                          "type": "uint16"
+                        },
+                        "id": 43,
+                        "name": "ElementaryTypeName",
+                        "src": "237:6:1"
+                      }
+                    ],
+                    "id": 44,
+                    "name": "ArrayTypeName",
+                    "src": "237:8:1"
+                  }
+                ],
+                "id": 45,
+                "name": "Mapping",
+                "src": "220:26:1"
+              }
+            ],
+            "id": 46,
+            "name": "VariableDeclaration",
+            "src": "220:37:1"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "codebook",
+              "scope": 82,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "struct Chunk.Codebook",
+              "value": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "Codebook",
+                  "referencedDeclaration": 41,
+                  "type": "struct Chunk.Codebook"
+                },
+                "id": 47,
+                "name": "UserDefinedTypeName",
+                "src": "319:8:1"
+              }
+            ],
+            "id": 48,
+            "name": "VariableDeclaration",
+            "src": "319:17:1"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "upload_book",
+              "scope": 82,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "book",
+                      "scope": 58,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct Chunk.Codebook",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "Codebook",
+                          "referencedDeclaration": 41,
+                          "type": "struct Chunk.Codebook"
+                        },
+                        "id": 49,
+                        "name": "UserDefinedTypeName",
+                        "src": "372:8:1"
+                      }
+                    ],
+                    "id": 50,
+                    "name": "VariableDeclaration",
+                    "src": "372:20:1"
+                  }
+                ],
+                "id": 51,
+                "name": "ParameterList",
+                "src": "371:22:1"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 52,
+                "name": "ParameterList",
+                "src": "401:0:1"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "struct Chunk.Codebook storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 48,
+                              "type": "struct Chunk.Codebook storage ref",
+                              "value": "codebook"
+                            },
+                            "id": 53,
+                            "name": "Identifier",
+                            "src": "412:8:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 50,
+                              "type": "struct Chunk.Codebook memory",
+                              "value": "book"
+                            },
+                            "id": 54,
+                            "name": "Identifier",
+                            "src": "423:4:1"
+                          }
+                        ],
+                        "id": 55,
+                        "name": "Assignment",
+                        "src": "412:15:1"
+                      }
+                    ],
+                    "id": 56,
+                    "name": "ExpressionStatement",
+                    "src": "412:15:1"
+                  }
+                ],
+                "id": 57,
+                "name": "Block",
+                "src": "401:34:1"
+              }
+            ],
+            "id": 58,
+            "name": "FunctionDefinition",
+            "src": "351:84:1"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "upload_arr",
+              "scope": 82,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "key",
+                      "scope": 73,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint8",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint8",
+                          "type": "uint8"
+                        },
+                        "id": 59,
+                        "name": "ElementaryTypeName",
+                        "src": "463:5:1"
+                      }
+                    ],
+                    "id": 60,
+                    "name": "VariableDeclaration",
+                    "src": "463:9:1"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "value",
+                      "scope": 73,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "uint16[]",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "length": null,
+                          "type": "uint16[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "uint16",
+                              "type": "uint16"
+                            },
+                            "id": 61,
+                            "name": "ElementaryTypeName",
+                            "src": "474:6:1"
+                          }
+                        ],
+                        "id": 62,
+                        "name": "ArrayTypeName",
+                        "src": "474:8:1"
+                      }
+                    ],
+                    "id": 63,
+                    "name": "VariableDeclaration",
+                    "src": "474:21:1"
+                  }
+                ],
+                "id": 64,
+                "name": "ParameterList",
+                "src": "462:34:1"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 65,
+                "name": "ParameterList",
+                "src": "504:0:1"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "uint16[] storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "uint16[] storage ref"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 46,
+                                  "type": "mapping(uint8 => uint16[] storage ref)",
+                                  "value": "arr"
+                                },
+                                "id": 66,
+                                "name": "Identifier",
+                                "src": "515:3:1"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 60,
+                                  "type": "uint8",
+                                  "value": "key"
+                                },
+                                "id": 67,
+                                "name": "Identifier",
+                                "src": "519:3:1"
+                              }
+                            ],
+                            "id": 68,
+                            "name": "IndexAccess",
+                            "src": "515:8:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 63,
+                              "type": "uint16[] memory",
+                              "value": "value"
+                            },
+                            "id": 69,
+                            "name": "Identifier",
+                            "src": "526:5:1"
+                          }
+                        ],
+                        "id": 70,
+                        "name": "Assignment",
+                        "src": "515:16:1"
+                      }
+                    ],
+                    "id": 71,
+                    "name": "ExpressionStatement",
+                    "src": "515:16:1"
+                  }
+                ],
+                "id": 72,
+                "name": "Block",
+                "src": "504:35:1"
+              }
+            ],
+            "id": 73,
+            "name": "FunctionDefinition",
+            "src": "443:96:1"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "download_chunk",
+              "scope": 82,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 74,
+                "name": "ParameterList",
+                "src": "574:2:1"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "book",
+                      "scope": 81,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct Chunk.Codebook",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "Codebook",
+                          "referencedDeclaration": 41,
+                          "type": "struct Chunk.Codebook"
+                        },
+                        "id": 75,
+                        "name": "UserDefinedTypeName",
+                        "src": "598:8:1"
+                      }
+                    ],
+                    "id": 76,
+                    "name": "VariableDeclaration",
+                    "src": "598:20:1"
+                  }
+                ],
+                "id": 77,
+                "name": "ParameterList",
+                "src": "597:22:1"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 77
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "overloadedDeclarations": [
+                            null
+                          ],
+                          "referencedDeclaration": 48,
+                          "type": "struct Chunk.Codebook storage ref",
+                          "value": "codebook"
+                        },
+                        "id": 78,
+                        "name": "Identifier",
+                        "src": "638:8:1"
+                      }
+                    ],
+                    "id": 79,
+                    "name": "Return",
+                    "src": "631:15:1"
+                  }
+                ],
+                "id": 80,
+                "name": "Block",
+                "src": "620:34:1"
+              }
+            ],
+            "id": 81,
+            "name": "FunctionDefinition",
+            "src": "551:103:1"
+          }
+        ],
+        "id": 82,
+        "name": "ContractDefinition",
+        "src": "70:587:1"
+      }
+    ],
+    "id": 83,
+    "name": "SourceUnit",
+    "src": "33:624:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.3",
+  "updatedAt": "2021-01-25T06:22:41.959Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
